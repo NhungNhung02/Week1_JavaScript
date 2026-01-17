@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+
+<body>
+    <h1>BMI Calculator for Mark and John</h1>
+    <div>
+        <h2>Mark's Data</h2>
+        <label for="markMass">Mass (kg):</label>
+        <input type="number" id="markMass" step="0.1"><br>
+        <label for="markHeight">Height (m):</label>
+        <input type="number" id="markHeight" step="0.01"><br>
+    </div>
+    <div>
+        <h2>John's Data</h2>
+        <label for="johnMass">Mass (kg):</label>
+        <input type="number" id="johnMass" step="0.1"><br>
+        <label for="johnHeight">Height (m):</label>
+        <input type="number" id="johnHeight" step="0.01"><br>
+    </div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div id="result"></div>
+
+    <script>
+        function calculateBMI() {
+            let markMass = parseFloat(document.getElementById('markMass').value);
+            let markHeight = parseFloat(document.getElementById('markHeight').value);
+            let johnMass = parseFloat(document.getElementById('johnMass').value);
+            let johnHeight = parseFloat(document.getElementById('johnHeight').value);
+
+            // Check if inputs are valid
+            if (isNaN(markMass) || isNaN(markHeight) || isNaN(johnMass) || isNaN(johnHeight) || markHeight <= 0 || johnHeight <= 0) {
+                document.getElementById('result').innerHTML = 'Please enter valid numbers for mass and height.';
+                return;
+            }
+
+            // Calculate BMIs
+            let markBMI = markMass / (markHeight * markHeight);
+            let johnBMI = johnMass / (johnHeight * johnHeight);
+            // Create Boolean variable
+            let markHigherBMI = markBMI > johnBMI;
+
+            // Display results
+            let resultText = `Mark's BMI: ${markBMI.toFixed(2)}<br>John's BMI: ${johnBMI.toFixed(2)}<br>`;
+            if (markHigherBMI) {
+                resultText += 'Mark has a higher BMI than John.';
+            } else if (johnBMI > markBMI) {
+                resultText += 'John has a higher BMI than Mark.';
+            } else {
+                resultText += 'Mark and John have the same BMI.';
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+
+</html>
