@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymnastics Competition</title>
+</head>
+
+<body>
+    <script>
+        function calculateWinner() {
+            // Lấy điểm Dolphins
+            var d1 = Number(document.getElementById("dolphins1").value);
+            var d2 = Number(document.getElementById("dolphins2").value);
+            var d3 = Number(document.getElementById("dolphins3").value);
+
+            // Lấy điểm Koalas
+            var k1 = Number(document.getElementById("koalas1").value);
+            var k2 = Number(document.getElementById("koalas2").value);
+            var k3 = Number(document.getElementById("koalas3").value);
+
+            // Kiểm tra dữ liệu hợp lệ
+            if (isNaN(d1) || isNaN(d2) || isNaN(d3) || isNaN(k1) || isNaN(k2) || isNaN(k3)) {
+                document.getElementById("result").innerHTML = "Please enter valid scores.";
+                return;
+            }
+
+            // Tính điểm trung bình
+            var dolphinsAvg = (d1 + d2 + d3) / 3;
+            var koalasAvg = (k1 + k2 + k3) / 3;
+
+            var resultText =
+                "Dolphins average: " + dolphinsAvg.toFixed(2) + "<br>" +
+                "Koalas average: " + koalasAvg.toFixed(2) + "<br>";
+
+            // So sánh kết quả (có điều kiện >= 100)
+            if (dolphinsAvg > koalasAvg && dolphinsAvg >= 100) {
+                resultText += "Dolphins win the trophy!";
+            }
+            else if (koalasAvg > dolphinsAvg && koalasAvg >= 100) {
+                resultText += "Koalas win the trophy!";
+            }
+            else if (dolphinsAvg === koalasAvg && dolphinsAvg >= 100) {
+                resultText += "It's a draw! Both teams win the trophy!";
+            }
+            else {
+                resultText += "No team wins the trophy.";
+            }
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+
+</html>
