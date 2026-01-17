@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+</head>
+<body>
+    <h1>Tip Calculator</h1>
+    <label for="bill">Bill value:</label>
+    <input type="number" id="bill" step="0.01" value="275"><br>
+    <button onclick="loadTest1()">Load Test 1 (275)</button>
+    <button onclick="loadTest2()">Load Test 2 (40)</button>
+    <button onclick="loadTest3()">Load Test 3 (430)</button>
+    <button onclick="calculateTip()">Calculate Tip</button>
+    <div id="result"></div>
+
+    <script>
+        function loadTest1() {
+            document.getElementById('bill').value = 275;
+        }
+
+        function loadTest2() {
+            document.getElementById('bill').value = 40;
+        }
+
+        function loadTest3() {
+            document.getElementById('bill').value = 430;
+        }
+
+        function calculateTip() {
+            const bill = parseFloat(document.getElementById('bill').value);
+
+            if (isNaN(bill) || bill <= 0) {
+                document.getElementById('result').innerHTML = 'Please enter a valid bill value.';
+                return;
+            }
+
+            const tip = (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.20;
+
+            const total = bill + tip;
+
+            console.log(`The bill was ${bill}, the tip was ${tip.toFixed(2)}, and the total value ${total.toFixed(2)}`);
+
+            document.getElementById('result').innerHTML = `The bill was ${bill}, the tip was ${tip.toFixed(2)}, and the total value ${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
