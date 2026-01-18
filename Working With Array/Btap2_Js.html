@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dog Age Study</title>
+</head>
+
+<body>
+    <h1>Dog Age Study</h1>
+    <p>Mở Console để xem kết quả</p>
+
+    <script>
+        'use strict';
+
+        function calcAverageHumanAge(ages) {
+            // Chuyển tuổi chó sang tuổi người
+            const humanAges = ages.map(function (age) {
+                if (age <= 2) {
+                    return age * 2;
+                } else {
+                    return 16 + age * 4;
+                }
+            });
+
+            //  Lọc chó trưởng thành (>= 18 tuổi người)
+            const adults = humanAges.filter(function (age) {
+                return age >= 18;
+            });
+
+            // Tuổi trung bình
+            let sum = 0;
+            for (let i = 0; i < adults.length; i++) {
+                sum += adults[i];
+            }
+
+            const average = sum / adults.length;
+            return average;
+        }
+
+        const data1 = [5, 2, 4, 1, 15, 8, 3];
+        const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+        console.log(calcAverageHumanAge(data1));
+        console.log(calcAverageHumanAge(data2));
+    </script>
+</body>
+
+</html>
