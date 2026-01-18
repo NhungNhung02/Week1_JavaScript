@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Football Game Events</title>
+</head>
+
+<body>
+    <h1>Football Game Events</h1>
+    <p>Mở Console để xem kết quả</p>
+
+    <script>
+        'use strict';
+
+        const gameEvents = new Map([
+            [17, '⚽ GOAL'],
+            [36, '🔁 Substitution'],
+            [47, '⚽ GOAL'],
+            [61, '🔁 Substitution'],
+            [64, '🟨 Yellow card'],
+            [69, '🔴 Red card'],
+            [70, '🔁 Substitution'],
+            [72, '🔁 Substitution'],
+            [76, '⚽ GOAL'],
+            [80, '⚽ GOAL'],
+            [92, '🟨 Yellow card'],
+        ]);
+
+
+        const events = [...new Set(gameEvents.values())];
+        console.log(events);
+
+        // Xóa thẻ vàng phút 64
+        gameEvents.delete(64);
+
+        // Tính trung bình thời gian xảy ra sự kiện
+        const totalMinutes = 90;
+        const avgEvent = totalMinutes / gameEvents.size;
+        console.log(`An event happened, on average, every ${avgEvent.toFixed(0)} minutes`);
+
+
+        for (const [minute, event] of gameEvents) {
+            const half = minute <= 45 ? 'FIRST HALF' : 'SECOND HALF';
+            console.log(`[${half}] ${minute}: ${event}`);
+        }
+    </script>
+</body>
+
+</html>
