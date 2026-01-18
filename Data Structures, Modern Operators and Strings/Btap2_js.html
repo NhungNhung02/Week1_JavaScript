@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Football Betting App - Challenge 2</title>
+</head>
+
+<body>
+    <h1>Football Betting App</h1>
+    <p>Mở Console (F12) để xem kết quả</p>
+
+    <script>
+        'use strict';
+
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+                [
+                    'Neuer',
+                    'Pavard',
+                    'Martinez',
+                    'Alaba',
+                    'Davies',
+                    'Kimmich',
+                    'Goretzka',
+                    'Coman',
+                    'Muller',
+                    'Gnabry',
+                    'Lewandowski',
+                ],
+                [
+                    'Burki',
+                    'Schulz',
+                    'Hummels',
+                    'Akanji',
+                    'Hakimi',
+                    'Weigl',
+                    'Witsel',
+                    'Hazard',
+                    'Brandt',
+                    'Sancho',
+                    'Gotze',
+                ],
+            ],
+            scored: ['Lewandowski', 'Gnabry', 'Lewandowski', 'Hummels'],
+            odds: {
+                team1: 1.33,
+                draw: 3.25,
+                team2: 6.5,
+            },
+        };
+
+        for (let i = 0; i < game.scored.length; i++) {
+            console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+        }
+
+        // 2. Tính odds trung bình
+        let sumOdds = 0;
+        const oddsValues = Object.values(game.odds);
+
+        for (let i = 0; i < oddsValues.length; i++) {
+            sumOdds += oddsValues[i];
+        }
+
+        const avgOdd = sumOdds / oddsValues.length;
+        console.log('Average odd:', avgOdd);
+
+        // 3. In odds theo format đẹp
+        for (const [key, value] of Object.entries(game.odds)) {
+            if (key === 'draw') {
+                console.log(`Odd of draw: ${value}`);
+            } else {
+                console.log(`Odd of victory ${game[key]}: ${value}`);
+            }
+        }
+
+        //Tạo object scorers
+        const scorers = {};
+
+        for (let i = 0; i < game.scored.length; i++) {
+            const player = game.scored[i];
+
+            if (scorers[player]) {
+                scorers[player]++;
+            } else {
+                scorers[player] = 1;
+            }
+        }
+
+        console.log(scorers);
+    </script>
+</body>
+
+</html>
