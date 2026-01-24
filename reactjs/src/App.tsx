@@ -1,11 +1,7 @@
-import LoginForm from "./components/Btap4/LoginForm/LoginForm";
+import ProductList from "./components/Btap5/ProductList/ProductList";
 
 function App() {
-  return (
-    <div>
-      <LoginForm />
-    </div>
-  );
+  return <ProductList />;
 }
 
 export default App;
