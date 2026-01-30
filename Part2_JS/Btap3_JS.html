@@ -3,33 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparing competitions</title>
+    <title>Compare BMI</title>
 </head>
 
 <body>
-    <script>
-        function calcBMI() {
-            this.bmi = this.mass / (this.height ** 2);
-            return this.bmi;
-        }
 
+    <script>
+        /*  Mark */
         const mark = {
-            fullName: 'Mark Miller',
+            fullName: "Mark Miller",
             mass: 78,
             height: 1.69,
-            calcBMI: calcBMI
+            calcBMI: function () {
+                this.bmi = this.mass / (this.height * this.height);
+                return this.bmi;
+            }
         };
 
+        /*  John */
         const john = {
-            fullName: 'John Smith',
+            fullName: "John Smith",
             mass: 92,
             height: 1.95,
-            calcBMI: calcBMI
+            calcBMI: function () {
+                this.bmi = this.mass / (this.height * this.height);
+                return this.bmi;
+            }
         };
 
+        /*  BMI */
         mark.calcBMI();
         john.calcBMI();
+
 
         if (mark.bmi > john.bmi) {
             console.log(
