@@ -1,31 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog number</title>
+  <meta charset="UTF-8">
+  <title>Kiểm Tra Tuổi Chó</title>
 </head>
+
 <body>
-    <script>
+  <h1>Kiểm Tra Tuổi Chó (Coding Challenge #1)</h1>
+
+  <button onclick="runData1()">Chạy Test Data 1</button>
+  <button onclick="runData2()">Chạy Test Data 2</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    'use strict';
+
+    // Hàm kiểm tra tuổi chó
     function checkDogs(dogsJulia, dogsKate) {
+      // 1. Copy mảng Julia & loại bỏ chó mèo
+      const juliaCorrected = dogsJulia.slice(1, -2);
 
-  const juliaCorrected = dogsJulia.slice(1, -2);
-  const allDogs = juliaCorrected.concat(dogsKate);
+      // 2. Gộp dữ liệu Julia + Kate
+      const allDogs = [...juliaCorrected, ...dogsKate];
 
-  allDogs.forEach((age, index) => {
-    if (age >= 3) {
-      console.log(
-        `Dog number ${index + 1} is an adult, and is ${age} years old`
-      );
-    } else {
-      console.log(
-        `Dog number ${index + 1} is still a puppy `
-        
-      );
+      let result = '';
+
+      // 3. Kiểm tra từng con chó
+      allDogs.forEach((age, index) => {
+        if (age >= 3) {
+          result += `Dog number ${index + 1} is an adult, and is ${age} years old\n`;
+        } else {
+          result += `Dog number ${index + 1} is still a puppy \n`;
+        }
+      });
+
+      return result;
     }
-  });
-}
 
-    </script>
+    // Test Data 1
+    function runData1() {
+      const julia = [3, 5, 2, 12, 7];
+      const kate = [4, 1, 15, 8, 3];
+
+      const output = checkDogs(julia, kate);
+      console.log(output);
+      document.getElementById('output').textContent = output;
+    }
+
+    // Test Data 2
+    function runData2() {
+      const julia = [9, 16, 6, 8, 3];
+      const kate = [10, 5, 6, 1, 4];
+
+      const output = checkDogs(julia, kate);
+      console.log(output);
+      document.getElementById('output').textContent = output;
+    }
+  </script>
 </body>
+
 </html>
